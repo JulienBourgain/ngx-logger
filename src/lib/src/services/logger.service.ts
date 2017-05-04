@@ -6,18 +6,18 @@ import { LogLevel } from '../log-level';
 
 @Injectable()
 export class LoggerService {
-  logs = new BehaviorSubject<Log>(undefined);
+  private logs = new BehaviorSubject<Log>(undefined);
 
   constructor(
     @Inject(LogLevel) private logLevel: LogLevelEnum
-  ) { }
+  ) {}
+
+  getLogs() {
+    return this.logs.filter(Boolean);
+  }
 
   log(... args: any[]) {
     this.handleLogs(LogLevelEnum.log, args);
-  }
-
-  debug(... args: any[]) {
-    this.handleLogs(LogLevelEnum.debug, args);
   }
 
   info(... args: any[]) {

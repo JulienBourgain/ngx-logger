@@ -1,4 +1,4 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule, Inject } from '@angular/core';
 
 import { LoggerService } from './services/logger.service';
 import { LogLevelEnum } from './entities/log-level.enum';
@@ -15,4 +15,8 @@ export class LoggerModule {
       ]
     };
   }
+}
+
+function provideLoggerService(logLevel: LogLevelEnum) {
+  return new LoggerService(logLevel);
 }

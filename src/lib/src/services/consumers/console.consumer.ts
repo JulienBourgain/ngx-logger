@@ -1,13 +1,13 @@
 import { LoggerService } from '../logger.service';
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/do';
+import { LogLevelEnum } from '../../entities/log-level.enum';
 
 @Injectable()
-export class ConsoleConsumer implements OnDestroy {
+export class ConsoleConsumer {
   constructor(private loggerService: LoggerService) {
-    loggerService.logs
-      .filter(Boolean)
-      .subscribe(log => console.log(log.payload));
+    loggerService.getLogs()
+      .subscribe(log => console[LogLevelEnum[log.level]](... log.payload));
   }
 }

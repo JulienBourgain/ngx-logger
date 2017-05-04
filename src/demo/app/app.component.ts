@@ -11,7 +11,7 @@ export class AppComponent {
   constructor(logger: LoggerService) {
     logger.log('Init App component');
     setInterval(() => {
-      logger.debug('Interval', new Date());
+      logger.warn('Interval', new Date());
     }, 1000);
   }
 }

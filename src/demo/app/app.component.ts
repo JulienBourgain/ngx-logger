@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { LoggerService } from 'ngx-logger';
+import { Component, OnInit } from '@angular/core';
+import { LoggerService, Logger } from 'ngx-logger';
 
 @Component({
   selector: 'demo-app',
@@ -7,11 +7,18 @@ import { LoggerService } from 'ngx-logger';
     <h3>Open your console</h3>
   `,
 })
-export class AppComponent {
-  constructor(logger: LoggerService) {
-    logger.log('Init App component');
+export class AppComponent implements OnInit {
+  logger: Logger;
+
+  constructor(loggerService: LoggerService) {
+    this.logger = loggerService.create(this.constructor.name);
+  }
+
+  ngOnInit() {
+    this.logger.log('Init App component');
     setInterval(() => {
-      logger.warn('Interval', new Date());
+      this.logger.warn('Interval', new Date());
     }, 1000);
+
   }
 }

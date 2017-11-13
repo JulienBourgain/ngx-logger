@@ -1,19 +1,19 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { LibService } from './logger.service';
+import { LoggerService } from './logger.service';
 
-describe('LibService', () => {
+describe('LoggerService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [LibService]
+      providers: [LoggerService]
     });
   });
 
-  it('should create services', inject([LibService], (service: LibService) => {
+  it('should create services', inject([LoggerService], (service: LoggerService) => {
     expect(service).toBeTruthy();
   }));
 
-  it('should return 42 from getMeaning', inject([LibService], (service: LibService) => {
-    expect(service.getMeaning()).toBe(42);
+  it('should return 42 from getMeaning', inject([LoggerService], (service: LoggerService) => {
+    expect(service.getLogs()).toBe(42);
   }));
 });

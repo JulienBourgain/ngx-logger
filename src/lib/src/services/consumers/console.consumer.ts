@@ -1,7 +1,5 @@
 import { LoggerService } from '../logger.service';
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/do';
 import { LogLevelEnum } from '../../entities/log-level.enum';
 
 @Injectable()

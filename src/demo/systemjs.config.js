@@ -35,6 +35,10 @@
       rxjs: {
         defaultExtension: 'js'
       },
+      'rxjs/operators': {
+        main: 'index.js',
+        defaultExtension: 'js'
+      },
       'angular-eager-provider-loader': {
         main: 'index.js',
         defaultExtension: 'js'

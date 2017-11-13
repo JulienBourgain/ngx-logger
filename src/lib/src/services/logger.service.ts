@@ -3,6 +3,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Log } from '../entities/log';
 import { LogLevelEnum } from '../entities/log-level.enum';
 import { LogLevel } from '../log-level';
+import { filter } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class LoggerService {
@@ -12,8 +14,8 @@ export class LoggerService {
     @Inject(LogLevel) private logLevel: LogLevelEnum
   ) {}
 
-  getLogs() {
-    return this.logs.filter(Boolean);
+  getLogs(): Observable<Log> {
+    return this.logs.pipe(filter(Boolean));
   }
 
   log(... args: any[]) {

@@ -7,7 +7,7 @@ import { AppComponent }  from './app.component';
 @NgModule({
   imports: [
     BrowserModule,
-    LoggerModule.forRoot(LogLevelEnum.log)
+    LoggerModule.forRoot(LogLevelEnum.warn)
   ],
   declarations: [
     AppComponent

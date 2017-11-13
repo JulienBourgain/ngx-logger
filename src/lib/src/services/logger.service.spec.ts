@@ -1,11 +1,18 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 
 import { LoggerService } from './logger.service';
+import { LogLevel } from '../log-level';
+import { LogLevelEnum } from '../entities/log-level.enum';
 
 describe('LoggerService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [LoggerService]
+      providers: [
+        LoggerService,
+        {
+          provide: LogLevel,
+          useClass: LogLevelEnum.info
+        }]
     });
   });
 
@@ -13,7 +20,4 @@ describe('LoggerService', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('should return 42 from getMeaning', inject([LoggerService], (service: LoggerService) => {
-    expect(service.getLogs()).toBe(42);
-  }));
 });
